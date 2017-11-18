@@ -1,34 +1,28 @@
-# Intelligent-Methods-of-Tuning-Filter
 
----
-
----
-## 1. A Intelligent Method of Tuning Filter Based on Q-Learning
-
-#### BPNNQN-FilterTuning
+# BPNNQN-FilterTuning
 
 A Intelligent Method of Tuning Filter Based on Q-Learning
 
-*Installation Dependencies:*  
+### Installation Dependencies:
 * Python 2.7
 * Keras 1.0
 
 ### Directories included in the toolbox
 
-`1-BPNNQN-FilterTuning/ai/`   - Back Propagation Neural Network with Keras.
+`ai/`   - Back Propagation Neural Network with Keras.
 
-`1-BPNNQN-FilterTuning/cavityfilter/`  - The environment of tuning filter by simulating. 
+`cavityfilter/`  - The environment of tuning filter by simulating. 
 
-`1-BPNNQN-FilterTuning/data/`  - Data used by simulating the environment of tuning filter.
+`data/`  - Data used by simulating the environment of tuning filter.
 
-`1-BPNNQN-FilterTuning/memory/`  - Utility functions used to sorce parameters.
+`memory/`  - Utility functions used to sorce parameters.
 
-`1-BPNNQN-FilterTuning/log/` - Save the log files in which processes are recorded.
+`log/` - Save the log files in which processes are recorded.
 
-`1-BPNNQN-FilterTuning/documents/` - Published papers.
+`documents/` - Published papers.
 
 
-*Algorithm*  
+### Algorithm 
 
 >
 > Initialize replay memory *D* to capacity N  
@@ -47,15 +41,15 @@ A Intelligent Method of Tuning Filter Based on Q-Learning
 >  **end for**
 
 
-*How to Run?*  
+### How to Run?
 
 > git clone https://github.com/ioaniu/Tuning-Filter.git  
 > cd 1-BPNNQN-FilterTuning  
 > python main.py
 
+
+### Other code
+'matlab/'   - Matlab Code.
+
 ---
 
-
----
-## 2. A Intelligent Method of Tuning Filter Based on Deterministic Policy Gradient
-In processing, please wait.
