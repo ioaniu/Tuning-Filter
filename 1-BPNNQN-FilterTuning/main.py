@@ -52,7 +52,8 @@ class Main:
 
 	net_models = None # networks models: BPNN
 
-	train_net = None # book the networks which tuning reached
+	#train_net = None # book the networks which tuning reachedtrain_success = 0
+	train_success = 0
 	#--Enviroment Parameters
 	state_nbr = 1
 	
@@ -223,9 +224,11 @@ class Main:
 				# Book tuning count
 				tuned_steps.append(tuning_step)
 
-				# Book current networks 
+				# Book current networks , save to json
 				if training:
-					self.train_net.append(nnet_now)
+					self.train_success += 1
+					nnet_now.save('log/modelsaved/' + str(self.train_success) + '_model.h5')
+					#self.train_net.append(nnet_now)
 
 
 				# Clear tuning step, finishe flag, anc cost.
@@ -250,7 +253,8 @@ class Main:
 
 		#return tuned steps
 		if training: 
-			return tuned_steps, self.train_net
+			#return tuned_steps, self.train_net
+			return tuned_steps, self.train_success
 		else:
 			return tuned_steps 
 
@@ -284,7 +288,8 @@ class Main:
 			if training_steps > 0:
 				print "Training for %d steps" % training_steps
 				# tuning filter
-				tuned_steps, train_net = self.tuning_filter(training_steps, training = True)
+				#tuned_steps, train_net = self.tuning_filter(training_steps, training = True)
+				tuned_steps, train_success = self.tuning_filter(training_steps, training = True)
 
 				# save training log
 				# epoch, training steps, avg qvlues, epsilon, memory count
@@ -349,7 +354,8 @@ class Main:
 			log_testing.close()
 
 		# return data 
-		return train_net
+		#return train_net
+		return train_success
 
 #----------------------------------------------------------------------------
 # main 
@@ -364,12 +370,13 @@ if __name__ == '__main__':
 
 	# testing steps limit
 	testing_steps = 200
-	mymain = Main()
+	my_main = Main()
 	# run the main loop 
-	train_net = mymain.run(epochs, training_steps, testing_steps)
+	print my_main.run(epochs, training_steps, testing_steps)
+	#train_net = my_main.run(epochs, training_steps, testing_steps)
 
-	train_net.save_weights('simulate_weigths.h5')
-	open('simulate_architechture.json', 'w').write(train_net.to_json())
-	open('simulate_architechture.yaml', 'w').write(train_net.to_yaml())
+	#train_net.save_weights('simulate_weigths.h5')
+	#open('simulate_architechture.json', 'w').write(train_net.to_json())
+	#open('simulate_architechture.yaml', 'w').write(train_net.to_yaml())
 
 # ---- The End -----#
